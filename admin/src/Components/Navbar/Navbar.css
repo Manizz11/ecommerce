@@ -1,0 +1,50 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 80px; /* wider padding for larger screens */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #fff;
+    position: sticky;  /* makes navbar stick to top */
+    top: 0;
+    z-index: 1000;
+    height: 100px;
+}
+
+.nav-logo {
+   height: 150px;
+    width: 180px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-profile {
+    width: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.nav-profile:hover {
+    opacity: 0.8;
+}
+
+@media(max-width: 800px) {
+    .navbar {
+        padding: 10px 20px; /* tighter padding for small screens */
+        flex-direction: column; /* stack items vertically */
+        gap: 10px;
+    }
+
+    .nav-logo {
+        width: 140px;
+    }
+
+    .nav-profile {
+        width: 50px;
+    }
+}

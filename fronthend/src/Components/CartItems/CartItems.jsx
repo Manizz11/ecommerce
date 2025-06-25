@@ -2,10 +2,15 @@ import React, { useContext } from "react";
 import "./CartItems.css";
 import { ShopContext } from "../../Context/ShopContext";
 import remove_icon from "../Assests/cart_cross_icon.png";
+import {loadstripe} from "@stripe/stripe-js"
 
 const CartItems = () => {
   const { getTotalCartAmount, all_product, cartItems, removeFromCart } =
     useContext(ShopContext);
+
+    const makePayment=async ()=>{
+      const stripe =await loadstripe("");
+    }
 
   return (
     <div className="cartitems">
@@ -66,7 +71,7 @@ const CartItems = () => {
               <h3>${getTotalCartAmount()}</h3>
             </div>
           </div>
-          <button>PROCEED TO CHECKOUT</button>
+          <button onClick={makePayment}>PROCEED TO CHECKOUT</button>
         </div>
         <div className="cartitems-promocode">
           <p>If you have a promo code, enter it here</p>

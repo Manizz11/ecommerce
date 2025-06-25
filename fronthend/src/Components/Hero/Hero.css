@@ -1,176 +1,179 @@
-.hero {
-    height: 100vh;
-    background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+.hero-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 1.5s ease-in-out;
+  transform: translateX(100%);
+  display: flex;
+  align-items: center;
+  padding: 0 10%;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 1;
+}
+
+.hero-slide.active ~ .hero-slide {
+  transform: translateX(-100%);
+}
+
+.hero-content {
+  max-width: 600px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.slide-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.8s ease 0.3s;
+}
+
+.slide-subtitles p {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.slide-subtitles p:first-child {
+  transition-delay: 0.5s;
+}
+
+.slide-subtitles p:last-child {
+  transition-delay: 0.7s;
+}
+
+.animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hero-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid white;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  margin-top: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease 1s forwards;
+}
+
+.hero-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+.hero-btn img {
+  width: 20px;
+  transition: transform 0.3s ease;
+}
+
+.hero-btn:hover img {
+  transform: translateX(5px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-indicators {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: white;
+  transform: scale(1.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-slide {
     padding: 0 5%;
-}
-
-.hero-left {
-    flex: 1 1 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-    padding: 0 2rem;
-    line-height: 1.2;
-}
-
-.hero-left h2 {
-    color: #090909;
+  }
+  
+  .slide-title {
+    font-size: 2.8rem;
+  }
+  
+  .slide-subtitles p {
     font-size: 2rem;
-    font-weight: 600;
+  }
 }
 
-.hero-left p {
-    color: #171717;
-    font-size: 4.5rem;
-    font-weight: 700;
-    margin: 0;
+@media (max-width: 768px) {
+  .slide-title {
+    font-size: 2.2rem;
+  }
+  
+  .slide-subtitles p {
+    font-size: 1.6rem;
+  }
+  
+  .hero-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
 }
 
-.hero-hand-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-}
-
-.hero-hand-icon img {
-    width: 80px;
-    height: auto;
-    object-fit: contain;
-}
-
-.hero-latest-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    width: fit-content;
-    padding: 15px 30px;
-    border-radius: 40px;
-    margin-top: 30px;
-    background-color: #ff4141;
-    color: #fff;
-    font-size: 1.25rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.hero-latest-btn:hover {
-    background-color: #e63737;
-}
-
-.hero-right {
-    flex: 1 1 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-}
-
-.hero-right img {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-.hero-right{
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-@media(max-width:1280px){
-    .hero-left{
-        padding-left: 100px;
-    }
-    .hero-left h2{
-        font-size: 22px;
-    }
-    .hero-left p{
-        font-size: 60px;
-    }
-    .hero-hand-icon img{
-        width: 80px;
-    }
-    .hero-latest-btn{
-        gap: 10px;
-        width: 250px;
-        height: 60px;
-        margin-top: 20px;
-        font-size: 18px;
-    }
-    .hero-right img{
-        width: 500px;
-    }
-}
-@media(max-width:1024px){
-    .hero-left{
-        padding-left: 80px;
-    }
-    .hero-left h2{
-        font-size: 20px;
-    }
-    .hero-left p{
-        font-size: 50px;
-    }
-    .hero-hand-icon img{
-        width: 65px;
-    }
-    .hero-latest-btn{
-        
-        width: 220px;
-        height: 50px;
-        font-size: 16px;
-    }
-    .hero-right img{
-        width: 400px;
-    }
-}
-@media(max-width:800px){
-    .hero-left{
-        padding-left: 30px;
-    }
-    .hero-left h2{
-        font-size: 16px;
-    }
-    .hero-left p{
-        font-size: 40px;
-    }
-    .hero-hand-icon img{
-        width: 50px;
-    }
-    .hero-latest-btn{
-        width: 175px;
-        height: 40px;
-        font-size: 13px;
-    }
-    .hero-right img{
-        width: 300px;
-    }
-}
-@media(max-width:500px){
-    .hero{
-        flex-direction: column;
-    }
-    .hero-right{
-        display: none;
-    }
-    .hero-left h2{
-        font-size: 18px;
-    }
-    .hero-left p{
-        font-size: 50px;
-    }
-    .hero-hand-icon img{
-        width: 55px;
-    }
-    .hero-latest-btn{
-        width: 200px;
-        height: 45px;
-        font-size: 14px; ;
-    }
+@media (max-width: 480px) {
+  .hero-content {
+    text-align: center;
+  }
+  
+  .slide-title {
+    font-size: 1.8rem;
+  }
+  
+  .slide-subtitles p {
+    font-size: 1.3rem;
+  }
 }

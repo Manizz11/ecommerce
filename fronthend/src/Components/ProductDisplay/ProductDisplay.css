@@ -1,4 +1,4 @@
-/* .productdisplay{
+.productdisplay{
     display:flex;
     margin: 0px 170px;
 }
@@ -25,7 +25,7 @@
 }
 .productdisplay-right h1{
     color: #3d3d3d;
-    font-weight: 40px;
+    font-size: 40px;
     font-weight:700 ;
 }
 .productdisplay-right-stars{
@@ -276,4 +276,4 @@
     .productdisplay-right-category{
         font-size: 16px;
     }
-} */
+}
